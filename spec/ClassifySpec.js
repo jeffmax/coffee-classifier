@@ -27,5 +27,12 @@ describe("Training", function(){
        internal = c.to_object();
        expect(internal.klass_count["python"]).toEqual(2);
        expect(internal.klass_count["java"]).toEqual(3);
+
+       c.untrain("Verbose Java", "java");
+       internal = c.to_object();
+       expect(internal.klass_count["java"]).toEqual(2);
+
+       c.rename_class("python", "javascript");
+       expect(c.classify("Learn PYTHON in 3 years")).toEqual("javascript");
    });
 });

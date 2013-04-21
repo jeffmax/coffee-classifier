@@ -78,13 +78,13 @@ Classifier = function() {
             record = _ref[feature];
             if (record.hasOwnProperty(from)) {
                 count = record[from];
-                record[to] = record[to] + count(record.hasOwnProperty(to) ? void 0 : count);
+                record[to] = record.hasOwnProperty(to) ? record[to] + count : count;
                 delete record[from];
             }
         }
         count = this.klass_count[from];
         delete this.klass_count[from];
-        return this.klass_count[to] = this.klass_count[to] + count(this.klass_count.hasOwnProperty(to) ? void 0 : count);
+        return this.klass_count[to] = this.klass_count.hasOwnProperty(to) ? this.klass_count[to] + count : count;
     };
     Classifier.prototype.documents_in_class_count = function(klass) {
         if (klass in this.klass_count) {

@@ -66,12 +66,12 @@ class Classifier
          for feature, record of @feature_count
              if record.hasOwnProperty(from)
                  count = record[from]
-                 record[to] = record[to] + count if record.hasOwnProperty(to) else count
+                 record[to] = if record.hasOwnProperty(to) then record[to] + count else count
                  delete record[from]
 
          count = @klass_count[from]
          delete @klass_count[from]
-         @klass_count[to] = @klass_count[to] + count if @klass_count.hasOwnProperty(to) else count
+         @klass_count[to] = if @klass_count.hasOwnProperty(to) then @klass_count[to] + count else count
 
      documents_in_class_count: (klass)->
          if klass of @klass_count
