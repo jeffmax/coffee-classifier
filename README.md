@@ -37,7 +37,7 @@ c.untrain("Something interesting to you", "mundane sentence")
 You can rename a class in the classifier. For example, you were previously training documents with the class name of "phyics" and realized your spelling mistake, you could do the following:
 
 ```coffeescript
-c.renameKlass('phyics', 'physics')
+c.rename_class('phyics', 'physics')
 ````
 
 

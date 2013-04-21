@@ -71,7 +71,7 @@ Classifier = function() {
             return this.klass_count[klass] -= 1;
         }
     };
-    Classifier.prototype.renameClass = function(from, to) {
+    Classifier.prototype.rename_class = function(from, to) {
         var count, feature, record, _ref;
         _ref = this.feature_count;
         for (feature in _ref) {

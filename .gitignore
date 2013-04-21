@@ -6,3 +6,5 @@
 *.nodep.js
 src/js/
 node_modules/
+.grunt/
+_SpecRunner.html

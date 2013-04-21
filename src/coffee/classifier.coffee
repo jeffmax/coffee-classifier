@@ -62,7 +62,7 @@ class Classifier
          if (features.length)
             @klass_count[klass] -= 1
 
-     renameClass: (from, to) ->
+     rename_class: (from, to) ->
          for feature, record of @feature_count
              if record.hasOwnProperty(from)
                  count = record[from]
