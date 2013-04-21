@@ -1,0 +1,10 @@
+{
+  "name": "coffee-classifier",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-jasmine": "~0.4.1",
+    "grunt-contrib-coffee": "~0.7.0"
+  }
+}

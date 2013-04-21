@@ -1,0 +1,6 @@
+*.DS_Store
+*.sw?
+.sass-cache
+.watch-pid
+src/js/
+node_modules/
