@@ -3,7 +3,8 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-	  coffee: {
+	pkg: grunt.file.readJSON('package.json'),
+	coffee: {
       options:{
         bare: true
       },
@@ -23,12 +24,46 @@ module.exports = function(grunt) {
         ]
       }
      }
-    }
+    },	
+	uglify: {
+	    options: {
+	      banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+	        '<%= grunt.template.today("yyyy-mm-dd") %> */'
+	    },
+	    jsminnodep: {
+		  options: {
+			  mangle: true,
+			  compress: true
+		  },
+	      files: {
+	        'dist/naivebayes.nodep.min.js': ['Porter-Stemmer/PorterStemmer1980.js','src/js/naivebayes.js']
+	      }
+	    },
+		jsnodep: {
+  		  options: {
+		      mangle: false,
+		      beautify: true,
+		      compress: false
+  		  },
+  	      files: {
+  	        'dist/naivebayes.nodep.js': ['Porter-Stemmer/PorterStemmer1980.js','src/js/naivebayes.js']
+  	      }
+		},
+	    jsmin: {
+		  options: {
+			  mangle: true,
+			  compress: true
+		  },
+	      files: {
+	        'dist/naivebayes.min.js': ['src/js/naivebayes.js']
+	      }
+	    }
+	 }
   });
-  
-  
+ 
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['coffee', 'jasmine']);
+  grunt.registerTask('default', ['coffee', 'jasmine', 'uglify']);
 };

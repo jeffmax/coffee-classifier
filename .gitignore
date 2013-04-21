@@ -2,5 +2,7 @@
 *.sw?
 .sass-cache
 .watch-pid
+*.nodep.min.js
+*.nodep.js
 src/js/
 node_modules/
