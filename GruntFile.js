@@ -39,27 +39,37 @@ module.exports = function(grunt) {
 	        'dist/naivebayes.nodep.min.js': ['Porter-Stemmer/PorterStemmer1980.js','src/js/naivebayes.js']
 	      }
 	    },
-		jsnodep: {
-  		  options: {
-		      mangle: false,
-		      beautify: true,
-		      compress: false
-  		  },
-  	      files: {
-  	        'dist/naivebayes.nodep.js': ['Porter-Stemmer/PorterStemmer1980.js','src/js/naivebayes.js']
-  	      }
-		},
-	    jsmin: {
-		  options: {
-			  mangle: true,
-			  compress: true
+		  jsnodep: {
+  	  	  options: {
+		        mangle: false,
+		        beautify: true,
+		        compress: false
+  	  	  },
+  	        files: {
+  	          'dist/naivebayes.nodep.js': ['Porter-Stemmer/PorterStemmer1980.js','src/js/naivebayes.js']
+  	        }
 		  },
-	      files: {
-	        'dist/naivebayes.min.js': ['src/js/naivebayes.js']
-	      }
+	    jsmin: {
+		    options: {
+		  	  mangle: true,
+		  	  compress: true
+		    },
+	        files: {
+	          'dist/naivebayes.min.js': ['src/js/naivebayes.js']
+	        }
+	    },
+	    js: {
+		    options: {
+		  	  mangle: false,
+          beautify: true,
+		  	  compress: false
+		    },
+	        files: {
+	          'dist/naivebayes.js': ['src/js/naivebayes.js']
+	        }
 	    }
 	 }
-  });
+});
  
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
