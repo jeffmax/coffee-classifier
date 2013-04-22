@@ -73,6 +73,12 @@ class Classifier
          delete @klass_count[from]
          @klass_count[to] = if @klass_count.hasOwnProperty(to) then @klass_count[to] + count else count
 
+     delete_class: (klass) ->
+         for feature, record of @feature_count
+             if record.hasOwnProperty(klass)
+                 delete record[klass]
+         delete @klass_count[from]
+
      documents_in_class_count: (klass)->
          if klass of @klass_count
              @klass_count[klass]
