@@ -77,7 +77,7 @@ class Classifier
          for feature, record of @feature_count
              if record.hasOwnProperty(klass)
                  delete record[klass]
-         delete @klass_count[from]
+         delete @klass_count[klass]
 
      documents_in_class_count: (klass)->
          if klass of @klass_count

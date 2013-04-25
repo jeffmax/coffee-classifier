@@ -1,4 +1,4 @@
-/*! coffee-classifier - v0.0.1 - 2013-04-21 */var Classifier, STOP_WORDS, stemmer;
+/*! coffee-classifier - v0.0.1 - 2013-04-24 */var Classifier, STOP_WORDS, stemmer;
 
 stemmer = stemmer != null ? stemmer : function(x) {
     return x;
@@ -85,6 +85,17 @@ Classifier = function() {
         count = this.klass_count[from];
         delete this.klass_count[from];
         return this.klass_count[to] = this.klass_count.hasOwnProperty(to) ? this.klass_count[to] + count : count;
+    };
+    Classifier.prototype.delete_class = function(klass) {
+        var feature, record, _ref;
+        _ref = this.feature_count;
+        for (feature in _ref) {
+            record = _ref[feature];
+            if (record.hasOwnProperty(klass)) {
+                delete record[klass];
+            }
+        }
+        return delete this.klass_count[klass];
     };
     Classifier.prototype.documents_in_class_count = function(klass) {
         if (klass in this.klass_count) {
