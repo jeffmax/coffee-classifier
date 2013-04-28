@@ -1,4 +1,4 @@
-/*! coffee-classifier - v0.0.1 - 2013-04-24 */var Classifier, STOP_WORDS, stemmer;
+/*! coffee-classifier - v0.0.1 - 2013-04-28 */var Classifier, STOP_WORDS, stemmer;
 
 stemmer = stemmer != null ? stemmer : function(x) {
     return x;
@@ -30,14 +30,18 @@ Classifier = function() {
         var feature, features, key, unique, value, _i, _len, _results;
         dokument = dokument.toLowerCase();
         dokument = dokument.replace(this.stop_words, "");
-        dokument = dokument.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, " ");
-        dokument = dokument.replace(/^\s+|\s+$/g, "");
-        dokument = dokument.replace(/[ ]+/g, " ");
+        dokument = dokument.replace(/[><\.,-\/#!$%\^&\*;:{}=\-_`~()?]/g, " ");
+        dokument = dokument.replace(/\[|\]/g, " ");
+        dokument = dokument.replace(/\s+/g, " ");
+        dokument = dokument.replace(/^\s*|\s*$/g, "");
+        dokument = dokument.replace(/[`'‘’’"]/g, "");
         features = dokument.split(" ");
         unique = {};
         for (_i = 0, _len = features.length; _i < _len; _i++) {
             feature = features[_i];
-            unique[stemmer(feature)] = 1;
+            if (!/^\d+/.test(feature) && feature.length > 2) {
+                unique[stemmer(feature)] = 1;
+            }
         }
         _results = [];
         for (key in unique) {

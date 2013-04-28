@@ -26,17 +26,23 @@ class Classifier
          # remove common words here
          dokument = dokument.replace(@stop_words, "")
          # remove punctuation
-         dokument = dokument.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g," ")
+         dokument = dokument.replace(/[><\.,-\/#!$%\^&\*;:{}=\-_`~()?]/g," ")
          # remove leading, trailing and consecutive spaces
-         dokument = dokument.replace(/^\s+|\s+$/g,'')
-         dokument = dokument.replace(/[ ]+/g," ")
+         dokument = dokument.replace(/\[|\]/g," ")
+         dokument = dokument.replace(/\s+/g," ")
+         dokument = dokument.replace(/^\s*|\s*$/g,'')
+         dokument = dokument.replace(/[`'‘’’"]/g,"")
          # TODO, might want to split on boundary
 
          features = dokument.split(" ")
-         # make sure we only return on instance of the feature 
-         # per documnet
+         # make sure we only return one instance of the feature 
+         # per document
+         # Also filter out features that:
+         # < 3 letters
+         # start with numbers
          unique = {}
-         unique[stemmer(feature)] = 1 for feature in features
+         unique[stemmer(feature)] = 1 for feature in features when \
+            not /^\d+/.test(feature) and feature.length > 2 
          key for key, value of unique
 
      train: (dokument, klass) ->
