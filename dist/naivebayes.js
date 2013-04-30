@@ -1,4 +1,4 @@
-/*! coffee-classifier - v0.0.1 - 2013-04-28 */var Classifier, STOP_WORDS, stemmer;
+/*! coffee-classifier - v0.0.1 - 2013-04-29 */var Classifier, STOP_WORDS, stemmer;
 
 stemmer = stemmer != null ? stemmer : function(x) {
     return x;
@@ -165,7 +165,7 @@ NaiveBayesClassifier = function(_super) {
     __extends(NaiveBayesClassifier, _super);
     function NaiveBayesClassifier(store, threshold, _default) {
         if (threshold == null) {
-            threshold = 1e-6;
+            threshold = 1e-8;
         }
         this["default"] = _default != null ? _default : "Uncategorized";
         NaiveBayesClassifier.__super__.constructor.call(this, store);
@@ -188,12 +188,11 @@ NaiveBayesClassifier = function(_super) {
         return doc_prob + category_prob;
     };
     NaiveBayesClassifier.prototype.classify = function(dokument) {
-        var best_klass, best_score, features, klass, log_threshold, probabilities;
+        var best_klass, best_score, features, klass, probabilities;
         features = this.get_features(dokument);
         if (!features.length) {
             return this["default"];
         }
-        log_threshold = Math.log(this.threshold);
         probabilities = {};
         best_score = this.threshold;
         for (klass in this.klass_count) {
