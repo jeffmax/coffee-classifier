@@ -1,4 +1,4 @@
-/*! coffee-classifier - v0.0.1 - 2013-04-29 */var Classifier, STOP_WORDS, stemmer;
+/*! coffee-classifier - v0.0.1 - 2013-05-01 */var Classifier, STOP_WORDS, stemmer;
 
 stemmer = stemmer != null ? stemmer : function(x) {
     return x;
@@ -165,7 +165,7 @@ NaiveBayesClassifier = function(_super) {
     __extends(NaiveBayesClassifier, _super);
     function NaiveBayesClassifier(store, threshold, _default) {
         if (threshold == null) {
-            threshold = 1e-8;
+            threshold = 1e-7;
         }
         this["default"] = _default != null ? _default : "Uncategorized";
         NaiveBayesClassifier.__super__.constructor.call(this, store);

@@ -1,6 +1,6 @@
 class NaiveBayesClassifier extends Classifier
 
-    constructor:(store, threshold=0.00000001, @default = "Uncategorized") ->
+    constructor:(store, threshold=0.0000001, @default = "Uncategorized") ->
         super(store)
         @threshold = Math.log(threshold)
 
