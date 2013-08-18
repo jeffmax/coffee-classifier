@@ -26,7 +26,7 @@ class Classifier
          # remove common words here
          dokument = dokument.replace(@stop_words, "")
          # remove punctuation
-         dokument = dokument.replace(/[><\.,-\/#!$%\^&\*;:{}=\-_`~()?]/g," ")
+         dokument = dokument.replace(/[><\.,-\/#!$%\^&\*;:{}=\-_`~()?|@]/g," ")
          # remove leading, trailing and consecutive spaces
          dokument = dokument.replace(/\[|\]/g," ")
          dokument = dokument.replace(/\s+/g," ")
